@@ -4,8 +4,9 @@ echo $POD
 command1="kubectl exec -it --namespace=javademo $POD cat /sys/fs/cgroup/memory/memory.limit_in_bytes"
 echo $command1
 POD_MEMORY=$($command1)
-echo $POD_MEMORY
-echo "scale=2; $POD_MEMORY / 1024 / 1024" | bc
+echo "Memory Limit: " $POD_MEMORY
+
+echo ${POD_MEMORY//}/1024/1024|bc
 
 command2="kubectl exec -it --namespace=javademo $POD cat /sys/fs/cgroup/cpu/cpu.cfs_quota_us"
 echo $command2
@@ -16,3 +17,6 @@ command3="kubectl exec -it --namespace=javademo $POD cat /sys/fs/cgroup/cpu/cpu.
 echo $command3
 POD_CPU_PERIOD=$($command3)
 echo $POD_CPU_PERIOD
+
+echo "scale=2; ${POD_CPU_QUOTA//}/${POD_CPU_PERIOD//}" | bc -l 
+
