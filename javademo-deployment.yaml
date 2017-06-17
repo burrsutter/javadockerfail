@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: myvertx
+  name: myvertx
+  namespace: javademo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myvertx  
+  template:
+    metadata:
+      labels:
+        app: myvertx
+    spec:    
+      containers:
+        - name: myvertx        
+          image: burr/myvertx:v1
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "250m"
+            limits:
+              memory: "100Mi"
+              cpu: "750m"          
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 3
+          ports:
+          - containerPort: 8080
+      
