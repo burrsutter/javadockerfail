@@ -20,4 +20,7 @@ echo $POD_CPU_PERIOD
 
 echo "scale=2; ${POD_CPU_QUOTA//}/${POD_CPU_PERIOD//}" | bc -l 
 
-
+command4="kubectl exec -it --namespace=javademo $POD cat /sys/fs/cgroup/cpu/cpu.shares"
+echo $command4
+POD_CPU_SHARES=$($command4)
+echo $POD_CPU_SHARES

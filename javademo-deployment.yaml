@@ -20,11 +20,11 @@ spec:
           image: burr/myvertx:v1
           resources:
             requests:
-              memory: "400Mi"
-              cpu: "750m"
+              memory: "300Mi"
+              cpu: "250m"
             limits:
               memory: "400Mi"
-              cpu: "750m"          
+              cpu: "1000m"          
           readinessProbe:
             httpGet:
               path: /
