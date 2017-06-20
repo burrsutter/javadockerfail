@@ -14,8 +14,8 @@ docker run -m 100MB openjdk:8u121 java -XshowSettings:vm -version
 # Java 8u131 calculating based on memory constraint
 docker run -m 100MB openjdk:8u131 java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XshowSettings:vm -version
 
-
-
+java -XshowSettings:vm -XX:+UnlockDiagnosticVMOptions -XX:+PrintActiveCpus -version
+java -XX:+PrintFlagsFinal -XX:+PrintGCDetails -version | grep 'MaxHeapSize'
 
 docker run -it -m 500MB --cpus="1.25" openjdk:8u131
 

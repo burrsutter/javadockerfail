@@ -10,6 +10,7 @@ docker run -it -p 8080:8080 burr/myvertx:v1
 
 one trick is knowing the IP address
 if you are using minishift, try minishift console --url 
+or minishift ip
 and then
 
 http://192.168.99.101:8080

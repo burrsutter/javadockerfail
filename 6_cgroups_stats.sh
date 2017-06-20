@@ -20,3 +20,4 @@ echo $POD_CPU_PERIOD
 
 echo "scale=2; ${POD_CPU_QUOTA//}/${POD_CPU_PERIOD//}" | bc -l 
 
+
