@@ -15,8 +15,6 @@ docker run -m 100MB openjdk:8u121 java -XshowSettings:vm -version
 docker run -m 100MB openjdk:8u131 java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XshowSettings:vm -version
 
 
-
-
 java -XshowSettings:vm -XX:+UnlockDiagnosticVMOptions -XX:+PrintActiveCpus -version
 java -XX:+PrintFlagsFinal -XX:+PrintGCDetails -version | grep 'MaxHeapSize'
 
@@ -31,4 +29,5 @@ java Test
 java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap Test
 
 --------------------------------
+
 docker run -it -m 500MB --cpu-quota=50000 --cpu-period=100000 openjdk:8u131 
