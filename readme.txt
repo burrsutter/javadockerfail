@@ -37,4 +37,8 @@ docker run -it -m 500MB --cpu-quota=50000 --cpu-period=100000 openjdk:8u131
 
 Otherwise just follow steps 1 through 9 and if you wish to kill the JVM running Spring Boot
 curl 192.168.99.101:31915/api/memory
+the ip and port is derived via ./9_curl_service_bootboom.sh
 as that will overallocate heap and depending on the VM RAM size and the bootboom-deployment.yaml, it dies
+My minishift VM size is 8GB
+
+./10_describe_bootboom.sh | grep OOMKilled
