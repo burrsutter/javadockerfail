@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: bootboom
+  name: bootboom
+  namespace: javademo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bootboom  
+  template:
+    metadata:
+      labels:
+        app: bootboom
+    spec:    
+      containers:
+        - name: bootboom        
+          image: burr/bootboom:v1
+          resources:
+            requests:
+              memory: "300Mi"
+              cpu: "250m"
+            limits:
+              memory: "400Mi"
+              cpu: "1000m"          
+          readinessProbe:
+            httpGet:
+              path: /api/hello
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 3
+          ports:
+          - containerPort: 8080
+      
