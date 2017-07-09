@@ -26,8 +26,15 @@ cat /sys/fs/cgroup/cpu/cpu.cfs_period_us
 java -XX:+UnlockDiagnosticVMOptions -XX:+PrintActiveCpus -version
 cd test
 java Test
+
+now try with the experimental settings
 java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap Test
 
 --------------------------------
-
+Kubernetes is using the --cpu-quota and --cpu-period settings
+you can try
 docker run -it -m 500MB --cpu-quota=50000 --cpu-period=100000 openjdk:8u131 
+
+Otherwise just follow steps 1 through 9 and if you wish to kill the JVM running Spring Boot
+curl 192.168.99.101:31915/api/memory
+as that will overallocate heap and depending on the VM RAM size and the bootboom-deployment.yaml, it dies
