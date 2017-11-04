@@ -13,7 +13,12 @@ public class MyController {
 	@RequestMapping(method = RequestMethod.GET, value = "/hello", produces = "text/plain")
 	public String hello() {
 		String hostname = System.getenv().getOrDefault("HOSTNAME", "Unknown");
-		return "Hello world from Spring Boot at " + new java.util.Date() + " on " + hostname;
+		long memory = Runtime.getRuntime().maxMemory();
+		int cores = Runtime.getRuntime().availableProcessors();
+	
+		return "Hello Spring Boot on " + hostname + " " + new java.util.Date()
+		+ " Memory: " + (memory / 1024 / 1024) 
+		+ " Cores: " + cores;
 	}
 
 	@CrossOrigin
