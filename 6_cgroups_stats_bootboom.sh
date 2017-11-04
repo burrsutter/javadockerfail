@@ -1,11 +1,12 @@
 #!/bin/bash
-POD=$(kubectl get pods --namespace=javademo -o yaml | grep "name: bootboom-" | cut -f2 -d':')
+POD=$(kubectl get pods -n javademo -l app=bootboom -o 'jsonpath={.items[0].metadata.name}')
 echo $POD
 command1="kubectl exec -it --namespace=javademo $POD cat /sys/fs/cgroup/memory/memory.limit_in_bytes"
 echo $command1
 POD_MEMORY=$($command1)
 echo "Memory Limit: " $POD_MEMORY
 
+# typing  requires: insert mode, control-v then enter 
 echo ${POD_MEMORY//}/1024/1024|bc
 
 command2="kubectl exec -it --namespace=javademo $POD cat /sys/fs/cgroup/cpu/cpu.cfs_quota_us"
