@@ -36,7 +36,9 @@ public class MyController {
 		String msg = "Allocated more than 80% (" + humanReadableByteCount(usedMemory, false) + ") of the max allowed JVM memory size ("
 				+ humanReadableByteCount(maxMemory, false) + ")";
 		System.out.println(msg);
-		return msg + "<hr>" + sb.toString();
+		return msg;
+		// not returning the generated string 
+		// + "<hr>" + sb.toString();
 	}
 
 	public static String humanReadableByteCount(long bytes, boolean si) {

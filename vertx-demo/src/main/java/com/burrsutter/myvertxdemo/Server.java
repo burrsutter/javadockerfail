@@ -33,8 +33,9 @@ public class Server extends AbstractVerticle {
       String msg = "Allocated more than 80% (" + humanReadableByteCount(usedMemory, false) + ") of the max allowed JVM memory size ("
           + humanReadableByteCount(maxMemory, false) + ")";
       System.out.println(msg);
-      // return msg;
-      rc.response().end(msg + "<hr>" + sb.toString()); 
+      rc.response().end(msg); 
+      // not returning the generated string
+      // rc.response().end(msg + "<hr>" + sb.toString()); 
     });
 
     vertx.createHttpServer()
