@@ -2,22 +2,22 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: myvertx
-  name: myvertx
+    app: vertxdemo
+  name: vertxdemo
   namespace: javademo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myvertx  
+      app: vertxdemo  
   template:
     metadata:
       labels:
-        app: myvertx
+        app: vertxdemo
     spec:    
       containers:
-        - name: myvertx        
-          image: burr/myvertx:v1
+        - name: vertxdemo        
+          image: burr/vertxdemo:v1
           resources:
             requests:
               memory: "300Mi"
@@ -27,7 +27,7 @@ spec:
               cpu: "1000m"          
           readinessProbe:
             httpGet:
-              path: /
+              path: /health
               port: 8080
             initialDelaySeconds: 10
             periodSeconds: 3

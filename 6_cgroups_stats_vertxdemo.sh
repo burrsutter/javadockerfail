@@ -1,5 +1,5 @@
 #!/bin/bash
-POD=$(kubectl get pods -n javademo -l app=myvertx -o 'jsonpath={.items[0].metadata.name}')
+POD=$(kubectl get pods -n javademo -l app=vertxdemo -o 'jsonpath={.items[0].metadata.name}')
 echo $POD
 command1="kubectl exec -it --namespace=javademo $POD cat /sys/fs/cgroup/memory/memory.limit_in_bytes"
 echo $command1

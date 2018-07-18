@@ -6,7 +6,7 @@ IP=$(minishift console --url | cut -f2 -d':' | cut -f3 -d'/')
 echo $IP
 
 # Get the NodePort of the service
-NODEPORT=$(kubectl --namespace=javademo get services bootboom -o yaml | grep nodePort | cut -f2 -d:)
+NODEPORT=$(kubectl --namespace=javademo get services vertxdemo -o yaml | grep nodePort | cut -f2 -d:)
 
 echo $NODEPORT
 

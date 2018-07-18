@@ -3,7 +3,7 @@
 
 	<groupId>com.burrsutter</groupId>
 	<artifactId>boot-boom</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>bootboom</name>

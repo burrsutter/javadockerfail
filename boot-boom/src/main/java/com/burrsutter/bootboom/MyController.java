@@ -6,11 +6,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
 public class MyController {
 
 	@CrossOrigin
-	@RequestMapping(method = RequestMethod.GET, value = "/hello", produces = "text/plain")
+	@RequestMapping(method = RequestMethod.GET, value = "/", produces = "text/plain")
 	public String hello() {
 		String hostname = System.getenv().getOrDefault("HOSTNAME", "Unknown");
 		long memory = Runtime.getRuntime().maxMemory();
@@ -52,7 +51,7 @@ public class MyController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/health")
 	public String health() {
-		return "I'm ok";
+		return "OK";
 	}
 
 }

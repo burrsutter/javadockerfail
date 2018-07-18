@@ -38,6 +38,10 @@ public class Server extends AbstractVerticle {
       // rc.response().end(msg + "<hr>" + sb.toString()); 
     });
 
+    router.get("/health").handler(rc -> {
+      rc.response().end("OK"); 
+    });
+
     vertx.createHttpServer()
         .requestHandler(router::accept)
         .listen(8080);

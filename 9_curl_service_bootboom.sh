@@ -1,9 +1,7 @@
 #!/bin/bash
 
-echo "Assumes minishift executable is one directory up from current directory"
-
 # Get the IP address of the VM
-IP=$(../minishift console --url | cut -f2 -d':' | cut -f3 -d'/')
+IP=$(minishift console --url | cut -f2 -d':' | cut -f3 -d'/')
 
 echo $IP
 
@@ -20,7 +18,7 @@ echo $THEURL
 # curl it
 while true
 do 
-  curl --connect-timeout 1 -s $THEURL/api/hello;
+  curl --connect-timeout 1 -s $THEURL/;
   echo
   sleep 1;
 done
